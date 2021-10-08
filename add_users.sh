@@ -7,7 +7,8 @@ sudo=false
 for user in "${users[@]}"
 do
 	sudo useradd -m $user
-	echo -e "$password\n$password" | sudo passwd -q $user  
+	echo -e "$password\n$password" | sudo passwd -q $user
+	sudo passwd -e $user
     if [ "$sudo" = true ] ; then
         sudo usermod -aG sudo $user
     fi	
